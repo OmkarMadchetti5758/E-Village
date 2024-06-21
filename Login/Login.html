@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="stylesheet" href="Login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Login</title>
+    <script>
+        function show() {
+            var pass = document.getElementById("pass");
+            if (pass.type === "password") {
+                pass.type = "text";
+            }
+            else {
+                pass.type = "password";
+            }
+        }
+
+        function formValidate()
+        {
+            var uname = document.getElementById('uname');
+            var pass = document.getElementById('pass');
+
+            if(isAlplabet(uname,"Login saved"))
+            {
+                if(isAlphaNumeric(pass,"Password must be Alpha Numeric"))
+                {
+                    document.write(fname);
+                    document.write(pass);
+                    return true;
+                }
+            }
+        }
+
+        function isAlplabet(uname,helper)
+        {
+            // var alpha = /^[A-Za-z0-9]+$/;
+            var alpha = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            if(uname.value.match(alpha))
+            {
+                return true;
+            }
+            else{
+                alert("Enter valid Username");
+                uname.focus();
+                return false;
+            }
+            return true;
+        }
+
+        function isAlphaNumeric(pass,helper)
+        {
+            var alnum = /^[0-9a-zA-Z]+$/;
+            if(pass.value.match(alnum))
+            {
+                return true;
+            }
+            else{
+                alert(helper);
+                pass.focus();
+                return false;
+            }
+            // return true;
+        }
+
+        function lengthRestriction(pass,min,max,helper)
+        {
+            if(pass.value.length >= min && pass.value.length <= max)
+                {
+                    return true;
+                }
+                else{
+                    alert("Password length must be 6-8 character");
+                    pass.focus();
+                    return false;
+                }
+        }
+        
+    </script>
+</head>
+
+<body>
+    <div class="form">
+        <form onsubmit="validator()" action="../admin_login.php" method="post">
+            <h2>Login as Admin</h2>
+            <div class="input-box">
+                <input type="text" id="uname" name="uname" placeholder="Username"><i class="fa fa-user"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" id="pass" name="pass" placeholder="Password"><i class="fa fa-lock"></i>
+            </div>
+            <div class="remember-forget">
+                <label><input type="checkbox" onclick="show()">Show Password</label><a href="#">Forget password?</a>
+            </div>
+            <input type="submit" value="Login" name="login" class="login" onclick="formValidate()">
+            <div class="register">
+                <p>Don't have an account?<a href="../Register/Register_admin.html">Register</a></p>
+            </div>
+            <div class="register">
+                <p><a href="../Home/home.php">Home</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

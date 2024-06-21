@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    width: 100%;
+    transition: ease-in 2s;
+}
+
+body {
+    background: seagreen;
+    /*background-image: url(calendar-background-illustration-with-circle-sign-for-planning-important-matter-time-management-work-organization-and-life-events-notification-or-holiday-vector.jpg);*/
+}
+
+.i1 {
+    margin-left: 530px;
+}
+
+h1 {
+    color: white;
+    text-decoration: black underline;
+    margin-top: -70px;
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    transition: ease-in 2s;
+}
+
+.c2 {
+    margin: 50px;
+    width: 850px;
+    height: 450px;
+}
+
+.c2 .b2 {
+    margin: 50px;
+    padding: 20px;
+    margin-left: 100px;
+    width: 990px;
+    height: 200px;
+    background: wheat;
+    box-shadow: black 10px 10px 30px;
+    border-radius: 10px;
+    transition: ease 2s;
+}
+
+.c2 .b2 img {
+    width: 120px;
+    height: 120px;
+    /*margin-bottom: -10px;*/
+    margin-top: 20px;
+}
+
+.c2 .b2 img:hover {
+    translate: 0px -10px;
+    transition: 0.5s;
+    background-color: black;
+    border-radius: 20px;
+}
+
+.b2 h2 {
+    color: black;
+    text-align: center;
+    font-size: 30px;
+    margin-top: -140px;
+    text-decoration: black underline;
+    transition: ease 1s;
+}
+
+.b2 h2:hover {
+    color: white;
+    transform: scale(1.1);
+    transition: 0.5s;
+    letter-spacing: 3px;
+}
+
+.b2 p {
+    color: black;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+    margin-top: 30px;
+    transition: ease 1.5s;
+}
+
+.b2 h3 {
+    text-align: center;
+    font-size: 25px;
+    margin-top: 20px;
+    transition: ease 2s;
+}
+
+.b2 h4 {
+    font-size: 20px;
+    font-family: sans-serif;
+    text-align: center;
+    margin-top: 25px;
+    letter-spacing: 2px;
+}

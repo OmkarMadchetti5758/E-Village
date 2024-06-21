@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../index.css">
+    <!-- <link rel="stylesheet" href="./population.css"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Truculenta:opsz,wght@12..72,100..900&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Truculenta:opsz,wght@12..72,100..900&display=swap" rel="stylesheet">
+
+    <?php
+
+    $db = pg_connect("dbname=evillage user=postgres password=redhat") or die("Cannot connect");
+    $sql = "select * from population";
+    $res = pg_query($db, $sql);
+
+    if ($res > 0) {
+        echo pg_last_error($db);
+    }
+
+    session_start();
+    ?>
+
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Kanit");
+        body{
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* font-family: Truculenta; */
+        }
+        #info {
+            margin: 20px;
+        }
+
+        #info h1 {
+            display: flex;
+            justify-content: center;
+            font-size: 35px;
+        }
+
+        .main-skills {
+            display: flex;
+            margin-top: 20px;
+            justify-content: center;
+            justify-content: space-evenly;
+            margin-top: 70px;
+        }
+
+        .main-skills .card {
+            width: 20%;
+            /* margin: 10px; */
+            height: 150px;
+            text-align: center;
+            background-color: wheat;
+            border-radius: 10px;
+            padding: 0px;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+            transition: ease-in-out 0.5s;
+        }
+
+        .main-skills .card:hover {
+            scale: 1.02;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .main-skills .card h2 {
+            margin-top: 30px;
+            margin-bottom: 10px;
+            text-transform: capitalize;
+        }
+
+        .main-skills .card h1 {
+            margin-top: 20px;
+        }
+
+        .main-skills .card p {
+            font-size: 12px;
+        }
+        hr{
+            margin-top: 50px;
+            margin-bottom : 20px;
+            margin-left:20px;
+            margin-right:20px;
+            border:1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="../Images/EvillageBanner.jpg" class="img">
+    </div>
+    <div class="menu-bar">
+        <ul>
+            <li><a href="#" style="color: seagreen;">Home</a>
+                <!-- <div class="sub-menu-1">
+                    <ul>
+                        <li><a href="#">Festivals</a></li>
+                        <li><a href="#">Meetings</a></li>
+                        <li><a href="#">Gatherings</a></li>
+                    </ul>
+                </div> -->
+            </li>
+            <li><a href="#info">Info</a>
+                <!-- <div class="sub-menu-1">
+                    <ul>
+                        <li><a href="#">Population</a></li>
+                        <li><a href="#">Demographs</a></li>
+                        <li><a href="#">Index</a></li>
+                    </ul>
+                </div> -->
+            </li>
+            <li><a href="#">Schools</a>
+                <!-- <div class="sub-menu-1">
+                    <ul>
+                        <li><a href="#">Facilities</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">More Info</a></li>
+                    </ul>
+                </div> -->
+            </li>
+            <li><a href="../Hospital/hospital.php">Hospitals</a>
+            </li>
+            <li><a href="../Gallery/gallery.php">Gallery</a>
+            </li>
+            <li><a href="../Scheme/scheme.php">Scheme</a>
+                <!-- <div class="sub-menu-1">
+                    <ul>
+                        <li><a href="#">Type</a></li>
+                        <li><a href="#">Funds</a></li>
+                    </ul>
+                </div> -->
+            </li>
+            <li><a href="../Events/events.php">Event</a>
+                <div class="sub-menu-1">
+                    <!-- <ul>
+                        <li><a href="#">Meetings</a></li>
+                        <li><a href="#">Sabha</a></li>
+                        <li><a href="#">Festivals</a></li>
+                    </ul> -->
+                </div>
+            </li>
+            <li><a href="../Notice/notice.php">Notice</a>
+                <!-- <div class="sub-menu-1">
+                    <ul>
+                        <li><a href="#">Order</a></li>
+                    </ul>
+                </div> -->
+            </li>
+            <li>
+                <a href="#about">About Us</a>
+            </li>
+            <li>
+                <?php
+                
+                if (!isset($_SESSION['Login'])) { ?>
+                    <a href="#">Login</a>
+                    <div class="sub-menu-1">
+                        <ul>
+                            <li><a href="../Login/Login.html">Admin</a></li>
+                            <li><a href="../Login/Login.html">User</a></li>
+                        </ul>
+                    </div>
+                <?php } else { ?>
+                    <a href="../Login/Login.html">Logout</a>
+                    <!-- <div class="sub-menu-1">
+                        <ul>
+                            <li><a href="../Login/Login.html">Admin</a></li>
+                            <li><a href="../Login/Login.html">User</a></li>
+                        </ul>
+                    </div> -->
+                <?php
+                    session_destroy();
+                }
+                ?>
+            </li>
+            <!-- <li><a href="#">Register</a>
+                <div class="sub-menu-1">
+                    <ul>
+                        <li><a href="../Register/Register_admin.html">Admin</a></li>
+                        <li><a href="../Register/Register_user.html">User</a></li>
+                    </ul>
+                </div>
+            </li> -->
+        </ul>
+    </div>
+
+    <div class="slider">
+        <div class="slides">
+            <img class="slide" src="../Images/new img1.jpg" alt="Image #1">
+            <img class="slide" src="../Images/new img2.jpg" alt="Image #2">
+            <img class="slide" src="../Images/new img3.jpg" alt="Image #3">
+            <img class="slide" src="../Images/new img4.jpg" alt="Image #1">
+            <img class="slide" src="../Images/img5.webp" alt="Image #2">
+        </div>
+        <button class="prev arrow" onclick="prevSlide()">&#10094</button>
+        <button class="next arrow" onclick="nextSlide()">&#10095</button>
+    </div>
+    </div>
+
+    <hr>
+
+    <section id="info">
+        <?php
+
+        while ($row = pg_fetch_row($res)) {
+
+        ?>
+            <h1>Population</h1>
+            <div class="main-skills">
+                <div class="card">
+                    <i class="fa-solid fa-people-group"></i>
+                    <h2>Total Population</h2>
+                    <h1><?php echo $row[0] ?></h1>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-people-group"></i>
+                    <h2>Total Houses</h2>
+                    <h1><?php echo $row[1] ?></h1>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-people-group"></i>
+                    <h2>Female Population</h2>
+                    <h1><?php echo $row[2] ?></h1>
+                </div>
+            </div>
+            <div class="main-skills">
+                <div class="card">
+                    <i class="fa-solid fa-people-group"></i>
+                    <h2>Total Literacy rate %</h2>
+                    <h1><?php echo $row[3] ?></h1>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-people-group"></i>
+                    <h2>Female Literacy rate</h2>
+                    <h1><?php echo $row[4] ?></h1>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-people-group"></i>
+                    <h2>Working Population %</h2>
+                    <h1><?php echo $row[5] ?></h1>
+                </div>
+            </div>
+            <div class="main-skills">
+                <div class="card">
+                    <i class="fa-solid fa-people-group"></i>
+                    <h2>Child Population 2011</h2>
+                    <h1><?php echo $row[6] ?></h1>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-people-group"></i>
+                    <h2>Scheduled Tribes %</h2>
+                    <h1><?php echo $row[7] ?></h1>
+                </div>
+                <div class="card">
+                    <i class="fa-solid fa-people-group"></i>
+                    <h2>Scheduled Caste %</h2>
+                    <h1><?php echo $row[8] ?></h1>
+                </div>
+            </div>
+        <?php } ?>
+    </section>
+    <hr>
+    <br>
+    <button class="top" id="js-top">&uarr;</button>
+    <section id="about">
+        <div id="about-section">
+            <h2>About Us</h2>
+            <p>Welcome to our E-Village website! Know more About your village. Feel free to navigate the Website. We hope
+                you enjoy the visual journey!</p>
+
+            <h2>Contact Us</h2>
+            <p class="contact-us">
+                Address : Baburaoji Gholap College,Sangvi,Pune-27.
+            </p>
+            <p class="contact-us">
+                Telephone no. : 080-12345678 .
+            </p>
+            <p class="contact-us">
+                Email : maharashtra@gov.in
+            </p>
+            <p class="contact-us">
+                Website : <a href="../Home/home.html">https://rdpr.maharashtra.gov.in/</a>
+            </p>
+        </div>
+    </section>
+    <script src="../index.js"></script>
+</body>
+
+</html>

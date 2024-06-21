@@ -1,0 +1,71 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: seagreen;
+    /* background-image: linear-gradient(to right,green,red,blue) */
+    /* background-image:url(/Images/notice1.jpg);
+    background-position: center;
+    background-repeat:repeat;
+    background-size: co; */
+}
+
+img{
+    width: 100%;
+}
+
+h1{
+    text-align: center;
+    font-size: 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: black underline;
+}
+
+.note-box{
+    width: 900px;
+    height: 700px;
+}
+
+.note{
+    margin: 50px;
+    width: 440px;
+    height: 350px;
+    background-color: wheat;
+    display: inline-table;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px;
+    transition: 0.5s;
+    /* justify-content: center;
+    justify-content: space-evenly; */
+}
+
+.note:hover{
+    translate: 0px -10px;
+    /* background-color: black;
+    color: white; */
+    transition: 0.5s;
+    box-shadow: 0px 10px 50px;
+}
+
+.note h2{
+    font-size: 80px;
+    margin-left: 10px;
+    color:green;
+}
+
+.note h3{
+    font-size: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.note p{
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 30px;
+    text-align: center;
+    font-size: 25px;
+}

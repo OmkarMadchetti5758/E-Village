@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link rel="stylesheet" href="../Login/Login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Register</title>
+    <script type="text/javascript">
+        function show() {
+            var pass = document.getElementById("pass");
+            var repass = document.getElementById("cpass");
+            if (pass.type === "password" && repass.type === "password") {
+                pass.type = "text";
+                repass.type = "text";
+            }
+            else {
+                pass.type = "password";
+                repass.type = "password";
+            }
+        }
+
+        function formValidate()
+        {
+            var uname = document.getElementById('uname');
+            var pass = document.getElementById('pass');
+
+            if(isAlplabet(uname,"Enter valid Username"))
+            {
+                if(isAlphaNumeric(pass,"Password must be Alpha Numeric"))
+                {
+                    document.write(fname);
+                    document.write(pass);
+                    return true;
+                }
+            }
+        }
+
+        function isAlplabet(uname,helper)
+        {
+            // var alpha = /^[a-zA-Z]+$/;
+            var alpha = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+            notEmpty(uname,"Enter username");
+            if(uname.value.match(alpha))
+            {
+                return true;
+            }
+            else{
+                alert("Enter Valid Username");
+                uname.focus();
+                return false;
+            }
+            return true;
+        }
+
+        function notEmpty(el,msg)
+        {
+                if(el.value.length == 0)
+                {
+                        alert("Enter required field");
+                        el.focus();
+                        return false;
+                }
+                else
+                {
+                        return true;
+                }
+        }
+
+        function isAlphaNumeric(pass,helper)
+        {
+            var alnum = /^[0-9a-zA-Z]+$/;
+            notEmpty(pass,"Enter password");
+            if(pass.value.match(alnum))
+            {
+                return true;
+            }
+            else{
+                alert("Password must be alphaNumeric");
+                pass.focus();
+                return false;
+            }
+            return true;
+        }
+
+        function lengthRestriction(pass,min,max,helper)
+        {
+            // notEmpty(pass,"Enter password");
+            if(pass.value.length >= min && pass.value.length <= max)
+                {
+                    return true;
+                }
+                else{
+                    alert("Password length must be 6-8 character");
+                    pass.focus();
+                    return false;
+                }
+        }
+        
+    </script>
+</head>
+<body>
+    <div class="form">
+        <form onsubmit="validator()" action="../admin_register.php" method="post">
+            <h2>Register</h2>
+            <div class="input-box">
+                <input type="text" id="uname" name="aname" placeholder="Username"><i class="fa fa-user"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" id="pass" name="pass" placeholder="Password"><i class="fa fa-lock"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" id="cpass" name="re-pass" placeholder="Confirm Password"><i class="fa fa-lock"></i>
+            </div>
+            <div class="remember-forget">
+                <label><input type="checkbox" onclick="show()">Show</label><a href="#">Forget password?</a>
+            </div>
+            <button type="submit" name="register" class="login">Register</button>
+            <!-- <input type="submit" value="Login" class="login"> -->
+            <!-- <button type="submit" name="register" class="login" onclick="formValidate()">Register</button> -->
+            
+            <!-- <div class="register">
+                <p><a href="../Home/home.html">Home</a></p>
+            </div> -->
+        </form>
+    </div>
+</body>
+</html>
